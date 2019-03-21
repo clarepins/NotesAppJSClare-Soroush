@@ -9,17 +9,24 @@
     var noteList = new NoteList(Note);
     var controller = new Controller(noteList , "Favourite drink: seltzer");
   // var controller = new Controller(noteList , "Favourite drink: seltzer");
-    var noteListView = new NoteListView(noteList)
-    document.getElementById("app").innerHTML = noteListView.getNoteString();
-
-
-
+    // var noteListView = new NoteListView(noteList)
+    // document.getElementById("app").innerHTML = noteListView.getNoteString();
+     controller.insertIntoAppElement();
     // console.log(document.getElementById("app").innerText);
 
 });
 
-function Controller(noteList,text){
-  this.noteList = noteList ;
-  this.text = text;
-  this.noteList.createNote(this.text);
-}
+(function(exports) {
+  function Controller(noteList,text){
+
+    this.noteList = noteList ;
+    this.text = text;
+    this.noteList.createNote(this.text);
+  }
+
+  Controller.prototype.insertIntoAppElement = function(){
+    var noteListView = new NoteListView(this.noteList);
+    document.getElementById("app").innerHTML = noteListView.getNoteString();
+  }
+  exports.Controller = Controller ;
+})(this);
