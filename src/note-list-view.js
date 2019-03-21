@@ -6,10 +6,12 @@
     var notesHtmlString = "<ul>"
 
     this.NoteList.getNotes().forEach(function(note) {
-      notesHtmlString = `${notesHtmlString}<li><div>${note.showText()}</div></li>`
+      // notesHtmlString = `${notesHtmlString}<li><div>${note.showText()}</div></li>`
+      notesHtmlString = notesHtmlString + "<li><div>" + note.showText() + "</div></li>"
     })
 
-    return `${notesHtmlString}</ul>`
+    // return `${notesHtmlString}</ul>`
+    return notesHtmlString + "</ul>"
   }
   exports.NoteListView = NoteListView;
 }) (this);

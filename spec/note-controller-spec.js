@@ -26,7 +26,7 @@ function pageHasTheString(){
   var noteListView = new NoteListViewDouble ;
   window.addEventListener('load', function() {
     controller.insertIntoAppElement(NoteListViewDouble);
-    console.log(document.getElementById('app').innerHTML);
+    // console.log(document.getElementById('app').innerHTML);
     var appInclusion = document.getElementById("app").innerHTML;
     assert.isTrue(appInclusion ===  "<ul><li><div>Favourite drink: seltzer</div></li></ul>" );
     });

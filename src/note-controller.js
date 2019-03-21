@@ -26,6 +26,7 @@
 
   Controller.prototype.insertIntoAppElement = function(NoteListView){
     var noteListView = new NoteListView(this.noteList);
+    //console.log(noteListView.getNoteString());
     document.getElementById("app").innerHTML = noteListView.getNoteString();
   }
   exports.Controller = Controller ;
