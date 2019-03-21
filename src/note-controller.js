@@ -11,7 +11,7 @@
   // var controller = new Controller(noteList , "Favourite drink: seltzer");
     // var noteListView = new NoteListView(noteList)
     // document.getElementById("app").innerHTML = noteListView.getNoteString();
-     controller.insertIntoAppElement();
+     controller.insertIntoAppElement(NoteListView);
     // console.log(document.getElementById("app").innerText);
 
 });
@@ -24,7 +24,7 @@
     this.noteList.createNote(this.text);
   }
 
-  Controller.prototype.insertIntoAppElement = function(){
+  Controller.prototype.insertIntoAppElement = function(NoteListView){
     var noteListView = new NoteListView(this.noteList);
     document.getElementById("app").innerHTML = noteListView.getNoteString();
   }
