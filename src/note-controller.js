@@ -1,33 +1,38 @@
-
-// window.addEventListener('load', function() {
-//   // console.log(document.getElementById("app").innerText);
-//   document.getElementById("app").innerHTML ="soroush" ;
-// })
-
-
-  window.addEventListener('load', function() {
-    var noteList = new NoteList(Note);
-    var controller = new Controller(noteList , "Favourite drink: seltzer");
-  // var controller = new Controller(noteList , "Favourite drink: seltzer");
-    // var noteListView = new NoteListView(noteList)
-    // document.getElementById("app").innerHTML = noteListView.getNoteString();
-     controller.insertIntoAppElement(NoteListView);
-    // console.log(document.getElementById("app").innerText);
+window.addEventListener('load', function() {
+  var noteList = new NoteList(Note);
+  var controller = new Controller(noteList , "Favourite drink: seltzer");
+  controller.insertIntoAppElement(NoteListView);
 
 });
 
 (function(exports) {
-  function Controller(noteList,text){
-
+  function Controller(noteList, text){
     this.noteList = noteList ;
     this.text = text;
     this.noteList.createNote(this.text);
+
   }
 
-  Controller.prototype.insertIntoAppElement = function(NoteListView){
+  Controller.prototype.insertIntoAppElement = function(NoteListView) {
     var noteListView = new NoteListView(this.noteList);
-    //console.log(noteListView.getNoteString());
     document.getElementById("app").innerHTML = noteListView.getNoteString();
   }
+
+  // Controller.prototype.makeUrlChangeForSingleNoteView = function() {
+  //   window.addEventListener("hashchange", setInnerHtmlText)
+  // };
+  //
+  // function setInnerHtmlText() {
+  //   var noteId = this.getNoteId()
+  //   var noteList = this.noteList
+  //   var noteText = noteList.notes[noteId]
+  //   var single = new SingleNoteView(noteText)
+  //   document.getElementById("app").innerHtml = single.showHTMLString()
+  // };
+  //
+  // function getNoteId() {
+  //   return window.location.hash.split("#notes/")[1];
+  // };
+
   exports.Controller = Controller ;
 })(this);
