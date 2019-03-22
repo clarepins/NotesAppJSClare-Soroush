@@ -1,14 +1,17 @@
 function testReturnsEmptyString() {
-  var NoteListDouble = {
-    getNotes: function(){
-      return [];
+  var noteDouble = {
+    showText: function(){
+      return("");
     }
   }
-  NoteListDouble.getNotes()
-
+  var NoteListDouble = {
+    getNotes: function(){
+      return [noteDouble];
+    }
+  }
   var noteListView = new NoteListView(NoteListDouble);
   var viewString = noteListView.getNoteString();
-  assert.isTrue(viewString === "<ul></ul>")
+  assert.isTrue(viewString === "<ul><li><div></div></li></ul>")
 }
 
 testReturnsEmptyString();
@@ -16,7 +19,7 @@ testReturnsEmptyString();
 function testReturnsHtmlWithOneNote() {
   var noteDouble = {
     showText: function(){
-      return "abc";
+      return "abcdefghiklmnopqrstuvwxyz";
     }
   }
 
@@ -27,7 +30,8 @@ function testReturnsHtmlWithOneNote() {
   }
 
   var noteListView = new NoteListView(NoteListDouble);
-  assert.isTrue(noteListView.getNoteString() === "<ul><li><div>abc</div></li></ul>")
+  console.log(noteListView.getNoteString())
+  assert.isTrue(noteListView.getNoteString() === "<ul><li><div>abcdefghiklmnopqrstu</div></li></ul>")
 }
 
 testReturnsHtmlWithOneNote()
